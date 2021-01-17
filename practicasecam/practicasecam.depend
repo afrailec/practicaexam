@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1610904852 source:d:\projects\univerisidad\practica examen\practicaexam\practicasecam\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
