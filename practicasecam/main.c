@@ -13,10 +13,17 @@ int main()
     srand(time(NULL));
 
     int matriz[N][N];
+    int c;
 
-    inicializar_matriz(matriz);
-    rellenar_matriz(matriz);
-    imprimir_matriz(matriz);
+    do{
+        printf("ELIJA UNA OPCION:\n0-SALIR\n1-GENERAR E IMPRIMIR MATRIZ ALEATORIA\n");
+        scanf("%d", &c);
+        if(c==1){
+            inicializar_matriz(matriz);
+            rellenar_matriz(matriz);
+            imprimir_matriz(matriz);
+        }
+    }while(c!=0);
 
     return 0;
 }
