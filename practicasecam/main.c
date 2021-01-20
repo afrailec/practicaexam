@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define N 10
+#define N 3
+
 
 struct Nodo{
     int dato;
@@ -22,6 +23,9 @@ void imprimir_lista(struct Lista);
 
 void intToString(int n, char *s);
 
+void matrizAVector(int A[][N], int v[]);
+void imprimir_array(int vector[20]);
+
 
 int main(){
 
@@ -31,11 +35,12 @@ int main(){
     int c, x, num;
     struct Lista list;
     char string[15];
+    int vector[20];
 
     list.cabecera=NULL;
 
     do{
-        printf("ELIJA UNA OPCION:\n0-SALIR\n1-GENERAR E IMPRIMIR MATRIZ ALEATORIA\n2-INSERTAR ELEMENTO EN UNA LISTA\n3-IMPRIMIR UNA LISTA\n4-LIMPIAR PANTALLA\n5-INTRODUCIR NUMERO EN STRING\n");
+        printf("ELIJA UNA OPCION:\n0-SALIR\n1-GENERAR E IMPRIMIR MATRIZ ALEATORIA\n2-INSERTAR ELEMENTO EN UNA LISTA\n3-IMPRIMIR UNA LISTA\n4-LIMPIAR PANTALLA\n5-INTRODUCIR NUMERO EN STRING\n6-MATRIZ A VECTOR(REQUIERE 1)\n");
         scanf("%d", &c);
 
         if(c==1){
@@ -61,6 +66,10 @@ int main(){
             scanf("%d", &num);
             intToString(num, string);
             puts(string);
+        }
+        if(c==6){
+            matrizAVector(matriz, vector);
+            imprimir_array(vector);
         }
 
     }while(c!=0);
@@ -145,4 +154,26 @@ void intToString(int n, char *s){
 
     s[i]='\0';
 
+}
+
+void matrizAVector(int A[][N], int v[]){
+    int cont=0;
+    int i,j;
+
+    for(i=0;i<=N;i++){
+        for(j=N;j>i;j--){
+            v[cont++]=A[j][i];
+        }
+        for(;j<=N;j++){
+            v[cont++]=A[i][j];
+        }
+    }
+}
+
+void imprimir_array(int vector[20]){
+    int i;
+
+    for(i=0; i<16; i++){
+        printf("%d  ", vector[i]);
+    }
 }
