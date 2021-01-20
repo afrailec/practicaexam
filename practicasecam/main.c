@@ -20,19 +20,22 @@ void imprimir_matriz();
 void introducir_lista(int valor, struct Lista *);
 void imprimir_lista(struct Lista);
 
+void intToString(int n, char *s);
+
 
 int main(){
 
     srand(time(NULL));
 
     int matriz[N][N];
-    int c, x;
+    int c, x, num;
     struct Lista list;
+    char string[15];
 
     list.cabecera=NULL;
 
     do{
-        printf("ELIJA UNA OPCION:\n0-SALIR\n1-GENERAR E IMPRIMIR MATRIZ ALEATORIA\n2-INSERTAR ELEMENTO EN UNA LISTA\n3-IMPRIMIR UNA LISTA\n");
+        printf("ELIJA UNA OPCION:\n0-SALIR\n1-GENERAR E IMPRIMIR MATRIZ ALEATORIA\n2-INSERTAR ELEMENTO EN UNA LISTA\n3-IMPRIMIR UNA LISTA\n4-LIMPIAR PANTALLA\n5-INTRODUCIR NUMERO EN STRING\n");
         scanf("%d", &c);
 
         if(c==1){
@@ -49,6 +52,15 @@ int main(){
 
         if(c==3){
             imprimir_lista(list);
+        }
+        if(c==4){
+            system("cls");
+        }
+        if(c==5){
+            printf("Introduzca el numero:");
+            scanf("%d", &num);
+            intToString(num, string);
+            puts(string);
         }
 
     }while(c!=0);
@@ -110,3 +122,27 @@ void imprimir_lista(struct Lista lista){
     }
     printf ("NULL\n");
 };
+
+void intToString(int n, char *s){
+    int i=0, power=1, copy;
+
+    if(n<0){
+        n=-n;
+        s[i++]='-';
+    }
+
+    copy=n;
+
+    while(copy>10){
+        power *= 10;
+        copy/=10;
+    }
+    for(;n>0;i++){
+        s[i]='0'+n/power;
+        n=n%power;
+        power/=10;
+    }
+
+    s[i]='\0';
+
+}
